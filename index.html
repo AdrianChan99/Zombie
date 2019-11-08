@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zombie</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <img id="zombie" src="images/zombie.jpg" onclick="zombie_death()">
+    <img id="explode" src="images/Explode.gif" >
+    <img id="zombie1" src="images/zombie.jpg" onclick="zombie_death1()">
+    <img id="explode1" src="images/Explode.gif" >
+    <h1 id="title">Score</h1>
+    <h2 id="score"></h2>
+    <audio id="death" src="src/Blast.wav"></audio>
+    <div id="reset">
+        <button id="reset_button" onclick="reset_score()">END</button>
+    </div>
+    <script>
+        let x = window.innerWidth - 150;
+        let y = window.innerHeight - 150;
+        let z = 1;
+        let l = 0;
+        let t = 0;
+        let score = 0;
+        document.getElementById("score").innerHTML = score;
+        function moving() {
+            l = (Math.random() * (+x - +z) + +z);
+            t = (Math.random() * (+y - +z) + +z);
+            document.getElementById("zombie").style.left=l;
+            document.getElementById("zombie").style.top=t;
+            document.getElementById("explode").style.left=l;
+            document.getElementById("explode").style.top=t;
+        }
+        function moving1() {
+            l = (Math.random() * (+x - +z) + +z);
+            t = (Math.random() * (+y - +z) + +z);
+            document.getElementById("zombie1").style.left=l;
+            document.getElementById("zombie1").style.top=t;
+            document.getElementById("explode1").style.left=l;
+            document.getElementById("explode1").style.top=t;
+        }
+        setTimeout(function(){moving();}, 0);
+        setInterval(function(){moving();}, 2000);
+        setTimeout(function(){moving1();}, 0);
+        setInterval(function(){moving1();}, 2000);
+        function zombie_death() {
+            document.getElementById("death").play();
+            document.getElementById("explode").style.display = "inline";
+            setTimeout(function(){hide_explode();}, 300);
+            setTimeout(function(){moving();}, 300);
+            add_score();
+        }
+        
+        function zombie_death1() {
+            document.getElementById("death").play();
+            document.getElementById("explode1").style.display = "inline";
+            setTimeout(function(){hide_explode1();}, 300);
+            setTimeout(function(){moving();}, 300);
+            add_score();
+        }
+        function add_score() {
+            score += 1;
+            document.getElementById("score").innerHTML = score;
+        }
+        function reset_score() {
+            score = 0;
+            document.getElementById("score").innerHTML = score;
+            moving();
+        }
+        function hide_explode() {
+            document.getElementById("explode").style.display = "none";
+        }
+        function hide_explode1() {
+            document.getElementById("explode1").style.display = "none";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+#zombie {
+    height: 150px;
+    width: 100px;
+    position: absolute;
+}
+
+#zombie1 {
+    height: 150px;
+    width: 100px;
+    position: absolute;
+}
+
+#title {
+    text-align: center;
+}
+
+#score {
+    text-align: center;
+}
+
+#reset {
+    text-align: center;
+}
+
+#reset_button {
+    display: inline-block;
+    position: absolute;
+    bottom: 10;
+}
+
+#explode {
+    height: 150px;
+    width: 100px;
+    position: absolute;
+    display: none;
+}
+
+#explode1 {
+    height: 150px;
+    width: 100px;
+    position: absolute;
+    display: none;
+}
